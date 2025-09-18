@@ -1,0 +1,4 @@
+
+1. Lav en visitkort generator
+2. LAV EN TERNINGE KAST SIMULATOR SOM UDSKRIVER ASCII ART
+
