@@ -1,0 +1,1 @@
+print("Velkommen til dag 2!")
