@@ -1,7 +1,7 @@
 import atm_funktioner
 
-
 while 1==1:
+    atm_funktioner.clear_console()
     print("VELKOMMEN TIL MENUEN")
     print("----------------------")
     print("Hvad vil du spise?")
