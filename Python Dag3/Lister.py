@@ -18,3 +18,6 @@ else:
 
 for konto in konti:
     print(konto)
+
+#Hent noget ud af listen:
+kunde_pin = konti["12345"]["pin"]
