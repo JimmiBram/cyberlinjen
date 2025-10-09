@@ -97,24 +97,6 @@ def listen(callback):
 
     return stop
 
-# --- Mini-demo når filen køres direkte (kan slettes) ---
-if __name__ == "__main__":
-    def demo_cb(message, ip, topic, name):
-        print(f"[{topic}] {name}@{ip}: {message}")
-
-    stop = listen(demo_cb)
-    print("Lytter i baggrunden. Skriv beskeder (Ctrl+C for at afslutte):")
-    try:
-        while True:
-            txt = input("> ")
-            if txt.strip() == "/stop":
-                break
-            send(txt, "general", "Demo")
-    except KeyboardInterrupt:
-        pass
-    finally:
-        stop()
-        print("Stopper.")
 
 
 # --- Konsol-hjælpefunktioner ---
@@ -156,3 +138,17 @@ def printBottom(text):
     for i, line in enumerate(lines):
         sys.stdout.write(f"\033[{start_row + i};1H{line}\033[0K")
     sys.stdout.flush()
+
+def inputBottom(prompt="> "):
+    """
+    Viser prompt på nederste linje og returnerer brugerens input,
+    uden at forstyrre tekst i toppen.
+    """
+    cols, rows = _get_size()
+    clearBottom()
+    sys.stdout.write(f"\033[{rows};1H{prompt}")
+    sys.stdout.flush()
+    try:
+        return input()
+    except EOFError:
+        return ""
